@@ -1,4 +1,4 @@
-package org.radekbor
+package org.radekbor.xml
 
 import org.apache.hadoop.io.{LongWritable, Text}
 import org.apache.hadoop.mapreduce.Mapper

@@ -1,6 +1,4 @@
-package org.radekbor
-
-import java.io.{BufferedReader, InputStreamReader}
+package org.radekbor.xml
 
 import org.apache.hadoop.conf.Configuration
 import org.scalatest.Matchers
@@ -13,8 +11,8 @@ class ParseJobTest extends org.scalatest.FunSuite with Matchers {
     conf.set("fs.default.name", "file:///")
     conf.set("mapred.job.tracker", "local")
     import org.apache.hadoop.fs.Path
-    val input = new Path("./src/test/resources")
-    val output = new Path("./target/output")
+    val input = new Path("./src/test/resources/xml")
+    val output = new Path("./target/output/xml")
     val fs = FileSystem.getLocal(conf)
     fs.delete(output, true) // delete old output
 

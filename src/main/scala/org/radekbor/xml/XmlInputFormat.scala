@@ -1,11 +1,11 @@
-package org.radekbor
+package org.radekbor.xml
 
 import java.io.IOException
 
 import org.apache.hadoop.fs.FSDataInputStream
 import org.apache.hadoop.io.{DataOutputBuffer, LongWritable, Text}
-import org.apache.hadoop.mapreduce.{InputSplit, RecordReader, TaskAttemptContext}
 import org.apache.hadoop.mapreduce.lib.input.{FileSplit, TextInputFormat}
+import org.apache.hadoop.mapreduce.{InputSplit, RecordReader, TaskAttemptContext}
 
 // TODO needs to be simplify
 object XmlInputFormat {

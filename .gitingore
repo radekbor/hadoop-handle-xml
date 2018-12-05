@@ -3,3 +3,4 @@ output/*
 project/target/*
 project/project/target/*
 .idea/*
+.idea/**

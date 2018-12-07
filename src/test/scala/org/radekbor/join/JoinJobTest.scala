@@ -1,11 +1,13 @@
 package org.radekbor.join
 
+import java.io.{BufferedReader, InputStreamReader}
+
 import org.apache.hadoop.conf.Configuration
 import org.scalatest.Matchers
 
 class JoinJobTest extends org.scalatest.FunSuite with Matchers {
 
-  test("Should return names") {
+  test("Should return city with people") {
     import org.apache.hadoop.fs.FileSystem
     val conf = new Configuration()
     conf.set("fs.default.name", "file:///")
@@ -22,10 +24,13 @@ class JoinJobTest extends org.scalatest.FunSuite with Matchers {
     val exitCode = driver.run(Array[String](input1.toString, input2.toString, output.toString))
     exitCode should be(0)
 
-  }
+    val in = fs.open(new Path("target/output/join/part-r-00000"))
+    val br = new BufferedReader(new InputStreamReader(in))
+    br.readLine() should be("Warszawa\tJane Alex,John Alex")
+    br.readLine() should be("Gdansk\tPeter Boch")
+    br.readLine() should be("Krakow\tLui Vanilla")
+    in.close()
 
-  private def lineToResult(arg: String): Array[Double] = {
-    arg.split("\\s+").map(_.toDouble)
   }
 
 }
